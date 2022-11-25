@@ -1,13 +1,15 @@
 import React from "react";
+import About from "../About/About";
 import Banner from "../Banner/Banner";
 
 const Home = () => {
   return (
     <div className="mx-5">
-      <h2 className="text-5xl text-center font-bold bg-black text-primary rounded">
-        THE EASIEST WAY TO BUY YOUR NEXT CAR
-      </h2>
       <Banner></Banner>
+      <p className="text-4xl font-bold bg-secondary text-center m-4 p-2">
+        About Us
+      </p>
+      <About></About>
     </div>
   );
 };
