@@ -11,7 +11,7 @@ const Banner = () => {
       <div className="hero-overlay bg-opacity-40"></div>
       <div className="hero-content text-white">
         <div className="">
-          <h1 className="mb-5 text-5xl font-bold">
+          <h1 className="mb-5 text-5xl font-bold text-secondary">
             THE EASIEST WAY TO BUY YOUR NEXT CAR
           </h1>
           <p className="mb-5">We help you get a great deal on a Car !</p>
