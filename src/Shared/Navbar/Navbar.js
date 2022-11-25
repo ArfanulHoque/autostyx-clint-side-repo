@@ -4,7 +4,13 @@ import logo from "../../assets/logo/logo.png";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
+
   const menuItems = (
     <>
       <li>
@@ -21,7 +27,7 @@ const Navbar = () => {
       </li>
       {user?.uid ? (
         <li>
-          <Link to="/login">Sign Out</Link>
+          <button onClick={handleLogOut}>Sign Out</button>
         </li>
       ) : (
         <li>
