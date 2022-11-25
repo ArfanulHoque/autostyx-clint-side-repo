@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login-pic.webp";
 import { FcGoogle } from "react-icons/fc";
-
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { error } from "daisyui/src/colors";
 
 const Login = () => {
   const {
@@ -11,9 +12,21 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const { signIn } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState("");
 
   const handleLogin = (data) => {
     console.log(data);
+    setLoginError("");
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setLoginError(error.message);
+      });
   };
 
   return (
@@ -70,7 +83,9 @@ const Login = () => {
                 <option value="B">Buyer</option>
               </select>
             </div>
-            <div>{/* <p>{error}</p> */}</div>
+            <div>
+              {loginError && <p className="text-red-600">{loginError}</p>}
+            </div>
             <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>

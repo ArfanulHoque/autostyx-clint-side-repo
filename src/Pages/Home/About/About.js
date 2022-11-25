@@ -10,10 +10,10 @@ const About = () => {
           <img src={img} className=" rounded-lg shadow-2xl" alt="" />
           <div>
             <p className="py-6">
-              Since 1984 , Car Fare Inc., began as a family run car dealership
-              with the vision of providing clean, quality used cars for our
-              customers. We saw a need in the Gaston County area for an honest
-              and loyal car dealer to serve those needs.
+              Since 1984 , AutoStyx Industries Ltd., began as a family run car
+              dealership with the vision of providing clean, quality used cars
+              for our customers. We saw a need in the Gaston County area for an
+              honest and loyal car dealer to serve those needs.
             </p>
             <h1 className="text-2xl font-bold">What Provides?</h1>
             <p>
