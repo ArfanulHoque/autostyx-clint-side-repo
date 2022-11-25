@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login-pic.webp";
-import { FcGoogle } from "react-icons/fc";
 
-const Login = () => {
+const Register = () => {
   return <div></div>;
 };
 
-export default Login;
+export default Register;
