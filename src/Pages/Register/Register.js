@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login-pic.webp";
 
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
   const {
@@ -10,9 +11,15 @@ const Register = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-
+  const { createUser } = useContext(AuthContext);
   const handleRegister = (data) => {
     console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
