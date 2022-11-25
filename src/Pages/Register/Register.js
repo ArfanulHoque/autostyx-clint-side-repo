@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login-pic.webp";
 
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const {
@@ -11,15 +12,27 @@ const Register = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
+  const [registerError, setRegisterError] = useState("");
   const handleRegister = (data) => {
     console.log(data);
+    setRegisterError("");
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast("User Created Successfully");
+        const userInfo = {
+          displayName: data.name,
+        };
+        updateUser(userInfo)
+          .then(() => {})
+          .catch((err) => console.log(err));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setRegisterError(error.message);
+      });
   };
 
   return (
@@ -48,23 +61,7 @@ const Register = () => {
                 <p className="text-red-600">{errors.name?.message}</p>
               )}
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo URL</span>
-              </label>
-              <input
-                {...register("photoURL", {
-                  required: "PhotoURL is required",
-                })}
-                type="text"
-                name="photoURL"
-                placeholder="Your Photo URL"
-                className="input input-bordered"
-              />
-              {errors.photoURL && (
-                <p className="text-red-600">{errors.photoURL?.message}</p>
-              )}
-            </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -105,6 +102,7 @@ const Register = () => {
                 <p className="text-red-600">{errors.password?.message}</p>
               )}
             </div>
+            {registerError && <p className="text-red-600">{registerError}</p>}
             <div className="form-control mt-6">
               <input
                 className="btn btn-primary"
