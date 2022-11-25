@@ -6,7 +6,11 @@ import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
   const handleLogin = (data) => {
     console.log(data);
@@ -26,27 +30,41 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                {...register("email")}
+                {...register("email", {
+                  required: "Email Address is required",
+                })}
                 type="text"
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
               />
+              {errors.email && (
+                <p className="text-red-600">{errors.email?.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                {...register("password")}
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be 6 character or longer",
+                  },
+                })}
                 type="password"
                 name="password"
                 placeholder="password"
                 className="input input-bordered"
               />
+              {errors.password && (
+                <p className="text-red-600">{errors.password?.message}</p>
+              )}
             </div>
             <div className="form-control">
-              <select {...register("category", { required: true })}>
+              <select {...register("category")}>
                 <option value="">Select...</option>
                 <option value="A">Seller</option>
                 <option value="B">Buyer</option>
