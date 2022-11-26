@@ -4,6 +4,7 @@ import img from "../../assets/images/login-pic.webp";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const {
@@ -11,12 +12,20 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const { signIn } = useContext(AuthContext);
+  const { signIn, providerLogin } = useContext(AuthContext);
+
   const [loginError, setLoginError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state.from?.pathname || "/";
+  // const from = location.state.from?.pathname || "/";
+  const googleProvider = new GoogleAuthProvider();
+  const handleGoogleLogin = () => {
+    providerLogin(googleProvider).then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
+  };
 
   const handleLogin = (data) => {
     console.log(data);
@@ -25,7 +34,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
+        // navigate({ from, replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -99,7 +108,10 @@ const Login = () => {
             </div>
 
             <div>
-              <button className="btn btn-primary bg-secondary w-full">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn btn-primary bg-secondary w-full"
+              >
                 <FcGoogle className="text-2xl"></FcGoogle> Login with Google
               </button>
             </div>
