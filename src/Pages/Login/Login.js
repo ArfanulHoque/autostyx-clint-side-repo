@@ -11,6 +11,7 @@ const Login = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
   const { signIn, providerLogin } = useContext(AuthContext);
 
@@ -18,12 +19,14 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const from = location.state.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
+
   const googleProvider = new GoogleAuthProvider();
   const handleGoogleLogin = () => {
     providerLogin(googleProvider).then((result) => {
       const user = result.user;
       console.log(user);
+      navigate(from, { replace: true });
     });
   };
 
@@ -34,7 +37,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        // navigate({ from, replace: true });
+        reset();
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -89,13 +93,7 @@ const Login = () => {
                 <p className="text-red-600">{errors.password?.message}</p>
               )}
             </div>
-            <div className="form-control">
-              <select {...register("category")}>
-                <option value="">Select...</option>
-                <option value="A">Seller</option>
-                <option value="B">Buyer</option>
-              </select>
-            </div>
+
             <div>
               {loginError && <p className="text-red-600">{loginError}</p>}
             </div>

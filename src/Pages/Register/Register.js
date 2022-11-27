@@ -11,6 +11,7 @@ const Register = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
   const [registerError, setRegisterError] = useState("");
@@ -21,6 +22,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        reset();
         toast("User Created Successfully");
         const userInfo = {
           displayName: data.name,
@@ -101,6 +103,12 @@ const Register = () => {
               {errors.password && (
                 <p className="text-red-600">{errors.password?.message}</p>
               )}
+            </div>
+            <div className="form-control">
+              <select {...register("category")}>
+                <option value="Buyer">Buyer</option>
+                <option value="Seller">Seller</option>
+              </select>
             </div>
             {registerError && <p className="text-red-600">{registerError}</p>}
             <div className="form-control mt-6">
