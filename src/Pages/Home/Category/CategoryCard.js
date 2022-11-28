@@ -13,7 +13,7 @@ const CategoryCard = ({ category }) => {
         <h2 className="card-title">{name}</h2>
         <p>Click All Products button to see all products</p>
         <div className="card-actions w-full">
-          <Link className="w-full">
+          <Link to={`/categories/${category_id}`} className="w-full">
             <button className="btn btn-primary w-full">All Products</button>
           </Link>
         </div>
