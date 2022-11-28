@@ -13,13 +13,16 @@ const Category = () => {
   });
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {categories.map((category) => (
-        <CategoryCard
-          key={category.category_id}
-          category={category}
-        ></CategoryCard>
-      ))}
+    <div>
+      <p className="text-4xl font-bold text-center mt-9">Category</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5">
+        {categories.map((category) => (
+          <CategoryCard
+            key={category.category_id}
+            category={category}
+          ></CategoryCard>
+        ))}
+      </div>
     </div>
   );
 };

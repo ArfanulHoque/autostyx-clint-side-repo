@@ -10,7 +10,7 @@ const Home = () => {
       <Banner></Banner>
 
       {/* category */}
-      <p className="text-4xl font-bold text-center mt-9">Category</p>
+
       <Category></Category>
 
       {/* Advertised */}
