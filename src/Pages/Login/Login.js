@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const {
@@ -24,8 +25,27 @@ const Login = () => {
   const googleProvider = new GoogleAuthProvider();
   const handleGoogleLogin = () => {
     providerLogin(googleProvider).then((result) => {
-      const user = result.user;
-      console.log(user);
+      const loginUser = result.user;
+
+      const user = {
+        email: loginUser.email,
+        name: loginUser.displayName,
+        role: "buyer",
+      };
+
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast("User Created Successfully");
+          }
+        });
       navigate(from, { replace: true });
     });
   };

@@ -16,19 +16,39 @@ const Register = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const [registerError, setRegisterError] = useState("");
   const handleRegister = (data) => {
-    console.log(data);
     setRegisterError("");
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        reset();
-        toast("User Created Successfully");
+
         const userInfo = {
           displayName: data.name,
         };
         updateUser(userInfo)
-          .then(() => {})
+          .then(() => {
+            const user = {
+              email: data.email,
+              name: data.name,
+              role: data.category,
+            };
+
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(user),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.acknowledged) {
+                  reset();
+                  toast("User Created Successfully");
+                }
+              });
+          })
+
           .catch((err) => console.log(err));
       })
       .catch((error) => {
@@ -106,8 +126,8 @@ const Register = () => {
             </div>
             <div className="form-control">
               <select {...register("category")}>
-                <option value="Buyer">Buyer</option>
-                <option value="Seller">Seller</option>
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
               </select>
             </div>
             {registerError && <p className="text-red-600">{registerError}</p>}
