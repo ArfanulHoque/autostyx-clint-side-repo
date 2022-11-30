@@ -20,13 +20,12 @@ const MyProducts = () => {
     <div>
       <h2 className="text-4xl text-center mb-3">My Products</h2>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
             <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Publish date</th>
+              <th>Name/Price</th>
+              <th>Publish Date</th>
               <th>Advertise</th>
               <th>Delete</th>
             </tr>

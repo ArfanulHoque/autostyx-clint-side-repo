@@ -41,12 +41,14 @@ const MyProductsRow = ({ products }) => {
         </div>
       </td>
       <td>{time}</td>
-      <button
-        onClick={() => handleUpload(products)}
-        className="btn btn-primary"
-      >
-        Advertise
-      </button>
+      <td>
+        <button
+          onClick={() => handleUpload(products)}
+          className="btn btn-primary btn-xs"
+        >
+          Advertise
+        </button>
+      </td>
       <th>
         <button className="btn btn-primary btn-xs ">Delete</button>
       </th>

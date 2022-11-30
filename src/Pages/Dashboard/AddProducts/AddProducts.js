@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const AddProducts = () => {
@@ -19,6 +20,7 @@ const AddProducts = () => {
     const number = form.number.value;
     const yearOfPurchase = form.yearOfPurchase.value;
     const category_id = form.category.value;
+    const navigate = useNavigate;
     const addProduct = {
       name,
       description,
@@ -46,7 +48,8 @@ const AddProducts = () => {
       .then((data) => {
         if (data.acknowledged) {
           form.reset();
-          toast.success("Booking Product Successfully");
+          toast.success("Added Product Successfully");
+          navigate("/dashboard/myproducts");
         }
       });
   };
@@ -112,7 +115,7 @@ const AddProducts = () => {
         <select name="category" className="select select-bordered w-full ">
           <option>Microbus</option>
           <option>Luxury car</option>
-          <option>Electric ca</option>
+          <option>Electric car</option>
         </select>
 
         <input

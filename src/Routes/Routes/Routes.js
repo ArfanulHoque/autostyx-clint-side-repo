@@ -77,10 +77,6 @@ export const router = createBrowserRouter([
         path: "/dashboard/allbuyers",
         element: <AllBuyers></AllBuyers>,
       },
-      {
-        path: "/dashboard/allusers",
-        element: <AllUsers></AllUsers>,
-      },
     ],
   },
   {

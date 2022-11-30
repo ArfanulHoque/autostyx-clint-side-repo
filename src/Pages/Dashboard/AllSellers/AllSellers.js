@@ -23,8 +23,8 @@ const AllSellers = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
               <th>Email</th>
+              <th>Name</th>
               <th>Verify</th>
               <th>Delete</th>
             </tr>
