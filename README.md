@@ -1,8 +1,12 @@
-###Client Side Private repo link Click here for the private repo:
+###Client Side Private repo link Click here for the private repo:https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-ArfanulHoque
 
-##Server Side Private repo link Click here for the private repo:
+##Server Side Private repo link Click here for the private repo:https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-ArfanulHoque/blob/main/README.md
 
-#Live website Link: click hare for live website:
+#Live website Link: click hare for live website:https://autostyx-6bd3d.web.app/
+
+## adminEmail: ali@ex.com
+
+## adminPassword: AB1234@
 
 Features:
 =>This websites you can buy and sell uses Microbus, Luxury car, Electric car
