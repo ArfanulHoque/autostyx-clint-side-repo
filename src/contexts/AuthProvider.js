@@ -30,8 +30,8 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const updateUser = (userInfo) => {
-    return updateProfile(user, userInfo);
+  const updateUser = (name) => {
+    return updateProfile(auth.currentUser, { displayName: name });
   };
 
   const logOut = () => {

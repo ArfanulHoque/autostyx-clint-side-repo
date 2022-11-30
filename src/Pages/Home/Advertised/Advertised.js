@@ -1,46 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import BookProduct from "../../Products/BookProduct/BookProduct";
+import AdvertisedCard from "./AdvertisedCard";
 
-const Advertised = () => {
+const Advertised = ({ advertise }) => {
+  console.log(advertise);
+  const [addDetails, setAddDetails] = useState(null);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure>
-          <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
+    <div className="my-32">
+      <h2>Advertise Items</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 px-10 gap-5">
+        {advertise.map((add) => (
+          <AdvertisedCard
+            key={add._id}
+            add={add}
+            setAddDetails={setAddDetails}
+          ></AdvertisedCard>
+        ))}
       </div>
 
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure>
-          <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div>
-
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <figure>
-          <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div>
+      {addDetails && (
+        <BookProduct
+          productDetails={addDetails}
+          setProductDetails={setAddDetails}
+        ></BookProduct>
+      )}
     </div>
   );
 };

@@ -1,24 +1,24 @@
 import React from "react";
 
-const ProductCard = ({ product, setProductDetails }) => {
+const AdvertisedCard = ({ add, setAddDetails }) => {
   const {
     name,
     image,
-    location,
-    resalePrice,
-    orginalPrice,
-    yearOfUse,
-    time,
-    sellerName,
     condition,
-    number,
-    yearOfPurchase,
     description,
-  } = product;
+    location,
+    number,
+    orginalPrice,
+    resalePrice,
+    sellerName,
+    time,
+    yearOfPurchase,
+    yearOfUse,
+  } = add;
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img src={image} alt="Shoes" />
+        <img src={image} alt="car" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
@@ -41,8 +41,8 @@ const ProductCard = ({ product, setProductDetails }) => {
         <div className="card-actions justify-end">
           <label
             htmlFor="booking-modal"
-            className="btn"
-            onClick={() => setProductDetails(product)}
+            className="btn btn-primary w-full"
+            onClick={() => setAddDetails(add)}
           >
             Book Product
           </label>
@@ -52,4 +52,4 @@ const ProductCard = ({ product, setProductDetails }) => {
   );
 };
 
-export default ProductCard;
+export default AdvertisedCard;
