@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.id}`),
+          fetch(`https://y-alpha-ten.vercel.app/categories/${params.id}`),
       },
     ],
   },

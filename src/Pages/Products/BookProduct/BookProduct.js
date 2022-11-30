@@ -20,7 +20,7 @@ const BookProduct = ({ productDetails, setProductDetails }) => {
       meeting_Location,
     };
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://y-alpha-ten.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

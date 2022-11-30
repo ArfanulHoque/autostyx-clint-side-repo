@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 const AllSellers = () => {
-  const url = "http://localhost:5000/users?role=seller";
+  const url = "https://y-alpha-ten.vercel.app/users?role=seller";
 
   const { data: users = [] } = useQuery({
     queryKey: ["users"],

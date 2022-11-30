@@ -37,7 +37,7 @@ const AddProducts = () => {
       category_id,
     };
     console.log(addProduct);
-    fetch("http://localhost:5000/products", {
+    fetch("https://y-alpha-ten.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

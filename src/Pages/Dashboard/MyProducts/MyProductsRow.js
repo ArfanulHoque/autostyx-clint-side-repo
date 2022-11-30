@@ -6,7 +6,7 @@ const MyProductsRow = ({ products }) => {
   const { image, name, resalePrice, time } = products;
   const [disable, setDisable] = useState(false);
   const handleUpload = (value) => {
-    fetch("http://localhost:5000/advertise", {
+    fetch("https://y-alpha-ten.vercel.app/advertise", {
       method: "POST",
       headers: {
         "content-type": "application/json",

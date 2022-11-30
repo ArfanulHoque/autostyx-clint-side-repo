@@ -32,7 +32,7 @@ const Register = () => {
           role: data.category,
         };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://y-alpha-ten.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
