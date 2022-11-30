@@ -25,7 +25,7 @@ const MyProducts = () => {
           <thead>
             <tr>
               <th>Name/Price</th>
-              <th>Publish Date</th>
+              <th></th>
               <th>Advertise</th>
               <th>Delete</th>
             </tr>

@@ -8,7 +8,7 @@ Features:
 =>This websites you can buy and sell uses Microbus, Luxury car, Electric car
 => Authentication system (you can logout or login by using email, and google).
 => This is a secure website.
-=> You can contact for photography
+=> You can buy a used car and sell your used car
 => user friendly UI.
 
 I have used for this website:
