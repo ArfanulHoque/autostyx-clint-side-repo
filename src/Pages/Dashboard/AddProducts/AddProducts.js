@@ -5,7 +5,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 
 const AddProducts = () => {
   const { user } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,7 +20,7 @@ const AddProducts = () => {
     const number = form.number.value;
     const yearOfPurchase = form.yearOfPurchase.value;
     const category_id = form.category.value;
-    const navigate = useNavigate;
+
     const addProduct = {
       name,
       description,

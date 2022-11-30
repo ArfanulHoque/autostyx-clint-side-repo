@@ -16,7 +16,7 @@ const MyProductsRow = ({ products }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.acknowledge) {
+        if (data.acknowledged) {
           setDisable(!disable);
           toast.success("Advertise Added Successfully.");
         } else {
