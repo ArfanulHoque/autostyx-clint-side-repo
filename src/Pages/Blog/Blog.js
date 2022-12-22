@@ -22,7 +22,6 @@ const Blog = () => {
           <li>1. Local state</li>
           <li>2. Global state</li>
           <li>3. Server state</li>
-          <li>4. URL state</li>
         </ul>
       </div>
       <div className="border-solid border-2 border-primary rounded-xl p-5 m-4">
